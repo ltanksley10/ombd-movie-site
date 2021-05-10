@@ -14,6 +14,21 @@ h1 {
   color: rgba(50, 50, 70, 0.5);
 }
 
+#popover-basic {
+  margin-top: 10px; 
+}
+
+#popover-basic::after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -10px;    
+    border-width: 10px;
+    border-style: solid; 
+    border-color: transparent transparent white transparent;
+}
+
 .app {
   background-image: url('./assets/cold-img.jpg');
   background-size: cover;
@@ -71,17 +86,18 @@ main {
   font-weight: 300;
   font-style: italic;
   text-align: center;
-  text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
+  text-shadow: 2px 2px 1px rgba(50, 50, 70, 0.5);
 }
 
 .weather-box {
   text-align: center;
+  padding-bottom: 10px;
 }
 
 .weather-box .temp {
   position: relative;
   display: inline-block;
-  margin: 30px auto;
+  margin: 30px auto 20px auto;
   padding-top: 30px!important;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 16px;
@@ -107,7 +123,7 @@ main {
   font-size: 16px;
   font-weight: 500;
   text-align: center;
-  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+  text-shadow: 3px 2px 1px rgba(50, 50, 70, 0.5);
 }
 
 @media (max-width: 320px) {

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import fetch from 'isomorphic-fetch';
 import moment from 'moment';
+import { OverlayTrigger, Popover } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const apiKey = process.env.REACT_APP_WEATHER_KEY;
 const baseURL = "https://api.openweathermap.org/data/2.5/";
@@ -9,6 +11,16 @@ function App () {
   
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
+  
+  const popover = (
+    <Popover id="popover-basic" className="shadow border-0 text-muted">
+      <Popover.Title as="h3">Instructions</Popover.Title>
+      <Popover.Content>
+          To search for your location enter exactly as follows: ex: 'Los Angeles, CA, US' - 
+          city, state, and country code separated by commas.
+      </Popover.Content>
+    </Popover>
+  );
   
   const search = evt => {
     if (evt.key === "Enter") {
@@ -42,14 +54,20 @@ function App () {
         <main>
           <div className="search-box">
             <h1>Current Weather Tracker</h1>
-            <input 
-              type="text"
-              className="search-bar"
-              placeholder="Search... (City, State, Country)"
-              onChange={e => setQuery(e.target.value)}
-              value={query}
-              onKeyPress={search}
-            />
+            <OverlayTrigger 
+             trigger="focus" 
+             placement="bottom" 
+             overlay={popover}
+             >
+              <input 
+                type="text"
+                className="search-bar"
+                placeholder="Search (ex: Los Angeles, CA, US)"
+                onChange={e => setQuery(e.target.value)}
+                value={query}
+                onKeyPress={search}
+              />
+            </OverlayTrigger>
           </div>
           {(typeof weather.main != "undefined") ? (
           <div>
