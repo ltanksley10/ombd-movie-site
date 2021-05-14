@@ -2,7 +2,7 @@
 
 A static site built with Open Weather's API and React.
 
-## Introduction
+## Description
 
 This site was built as more practice for using REST API's and React. Using Open
 Weather's API the current temperature and weather description is rendered when
